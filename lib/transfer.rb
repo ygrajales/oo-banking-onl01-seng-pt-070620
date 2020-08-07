@@ -31,10 +31,13 @@ class Transfer
   
   
   def reverse_transfer
-    intermediate = sender
-    sender = receiver
-    receiver = intermediate
-    Transfer.new(sender, receiver, self.amount)
+    if amount < receiver.balance && valid? && self.status == "complete"
+      sender.deposit(self.amount)
+      receiver.withdrawal(self.amount)
+      self.status = "reversed"
+    else
+      self.status = "rejected"
+      "Transation rejected.  Please check your account balance."
   end
  
  
