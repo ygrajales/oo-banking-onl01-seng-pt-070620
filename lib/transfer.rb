@@ -28,6 +28,14 @@ class Transfer
     end
     
   end
+  
+  
+  def reverse_transfer
+    intermediate = sender
+    sender = receiver
+    receiver = intermediate
+    Transfer.new(sender, receiver, self.amount)
+  end
  
  
 end
