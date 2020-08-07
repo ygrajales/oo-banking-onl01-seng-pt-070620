@@ -17,9 +17,12 @@ class Transfer
  
   
   def execute_transaction
-    if @amount >= @sender.
-    @sender.withdrawal(@amount)
-    @receiver.deposit(@amount)
+    
+    if @amount >= @sender.balance
+      @sender.withdrawal(@amount)
+      @receiver.deposit(@amount)
+    else
+      
   end
  
  
