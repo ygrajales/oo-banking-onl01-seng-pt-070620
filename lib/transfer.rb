@@ -18,9 +18,9 @@ class Transfer
   
   def execute_transaction
     
-    if @amount >= @sender.balance
-      self.sender.withdrawal(@amount)
-      self.receiver.deposit(@amount)
+    if amount <= sender.balance && valid?
+      sender.withdrawal(amount)
+      receiver.deposit(amount)
     else
       "Transaction rejected. Please check your account balance."
     end
